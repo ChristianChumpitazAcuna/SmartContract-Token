@@ -30,9 +30,9 @@ export default function SelectAccount({
 				<SelectContent>
 					<SelectGroup>
 						<SelectLabel>Cuentas de MetaMask</SelectLabel>
-						{accounts.map((account, index) => (
+						{accounts.map((account) => (
 							<SelectItem key={account} value={account}>
-								Cuenta {index + 1}: {account.slice(0, 6)}...{account.slice(-4)}
+								{account.slice(0, 7)}...{account.slice(-5)}
 							</SelectItem>
 						))}
 					</SelectGroup>

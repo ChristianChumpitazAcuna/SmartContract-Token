@@ -33,9 +33,7 @@ export default function UserInfo({ account, balance }: UserInfoProps) {
 						<Wallet className="h-6 w-6" />
 						<div className="flex-1 space-y-1">
 							<p className="text-sm font-medium">Balance</p>
-							<p className="text-sm text-muted-foreground">
-								{balance.toString()}<span className="text-muted-foreground"> KR</span>
-							</p>
+							<p className="text-sm text-muted-foreground">{balance}</p>
 						</div>
 					</div>
 				</CardDescription>

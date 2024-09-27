@@ -10,7 +10,7 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Toaster } from "../ui/sonner";
 import { toast } from "sonner";
-import { User } from "lucide-react";
+import { LoaderCircle, User } from "lucide-react";
 
 interface TransferTokenProps {
 	account: string;
@@ -74,8 +74,15 @@ export default function TransferToken({
 					<label>Monto</label>
 					<Input value={amount} onChange={(e) => setAmount(e.target.value)} />
 				</CardDescription>
-				<Button disabled={loading} onClick={transferToken}>
-					Transfer
+				<Button type="submit" disabled={loading} className="w-full">
+					{loading ? (
+						<div className="flex items-center justify-center gap-2">
+							<LoaderCircle className="w-4 h-4 animate-spin" />
+							<span>Transferiendo...</span>
+						</div>
+					) : (
+						<span>Transferir</span>
+					)}
 				</Button>
 			</CardContent>
 			<Toaster />
