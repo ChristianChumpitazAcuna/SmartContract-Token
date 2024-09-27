@@ -5,6 +5,7 @@ import Web3Service from "../service/web3Service";
 export const useContract = () => {
     const [contract, setContract] = useState<ContractService | null>(null);
     const [account, setAccount] = useState<string | null>(null);
+    const [accounts, setAccounts] = useState<string[]>([]);
     const [web3Service, setWeb3Service] = useState<Web3Service | null>(null);
 
     useEffect(() => {
@@ -32,14 +33,19 @@ export const useContract = () => {
         const _web3Service = new Web3Service();
         setWeb3Service(_web3Service);
         try {
-            const { web3, account } = await _web3Service.connect();
+            const { web3, accounts } = await _web3Service.connect();
             const service = new ContractService(web3);
             setContract(service);
+            setAccounts(accounts);
             setAccount(account);
         } catch (e) {
             console.error(e);
         }
     }
 
-    return { contract, account };
+    const handleAccountChange = (newAccount: string) => {
+        setAccount(newAccount);
+    }
+
+    return { contract, account, accounts, handleAccountChange };
 }
