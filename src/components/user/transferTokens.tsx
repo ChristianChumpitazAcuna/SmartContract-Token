@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
 	Card,
 	CardContent,
@@ -26,12 +26,6 @@ export default function TransferToken({
 	const [amount, setAmount] = useState<string>("");
 	const [receiver, setReceiver] = useState<string>("");
 	const [loading, setLoading] = useState<boolean>(false);
-
-	useEffect(() => {
-		if (account && contract) {
-			transferToken();
-		}
-	}, [account, contract]);
 
 	const transferToken = async () => {
 		if (contract && receiver) {
@@ -74,7 +68,12 @@ export default function TransferToken({
 					<label>Monto</label>
 					<Input value={amount} onChange={(e) => setAmount(e.target.value)} />
 				</CardDescription>
-				<Button type="submit" disabled={loading} className="w-full">
+				<Button
+					onClick={transferToken}
+					type="submit"
+					disabled={loading}
+					className="w-full"
+				>
 					{loading ? (
 						<div className="flex items-center justify-center gap-2">
 							<LoaderCircle className="w-4 h-4 animate-spin" />

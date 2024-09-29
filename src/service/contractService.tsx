@@ -2,7 +2,7 @@ import Web3 from "web3";
 import contractABI from "../ABI/contractABI.json";
 import BigNumber from "bignumber.js";
 
-const CONTRACT_ADDRESS = "0xa288ccfBd425d08C873396f4e235e094325E8b9a";
+const CONTRACT_ADDRESS = "0x3161801Cb3A21361c10930D106793CC80ae8144F";
 
 interface MyContract {
 	methods: {
